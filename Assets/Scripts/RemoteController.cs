@@ -2,22 +2,15 @@ using UnityEngine;
 
 public class RemoteController : MonoBehaviour
 {
-    [SerializeField] private Transform _wire;
-    [SerializeField] private Transform _controllerBase;
-    [SerializeField] private Transform _engineBase;
-    [SerializeField] private float _wireColliderRadius;
+    private Vector3 _startLocalPosition;
 
-    private void Update()
+    private void Awake()
     {
-        UpdateWireTransform();
+        _startLocalPosition = transform.localPosition;
     }
 
-    private void UpdateWireTransform()
+    public void OnDrop() //We're assuming that controller is attached to engine, but i'm not sure if that's how it should work. Let's pretend that rope pulls the controller back to it's state when released, or it's leash is small and the worker goes with controller in his hands while working
     {
-        Vector3 direction = _controllerBase.position - _engineBase.position;
-        float distance = direction.magnitude;
-        _wire.position = (_engineBase.position + _controllerBase.position) * _wireColliderRadius;
-        _wire.rotation = Quaternion.FromToRotation(Vector3.up, direction);
-        _wire.localScale = new Vector3(_wire.localScale.x, distance * _wireColliderRadius, _wire.localScale.z);
+        transform.localPosition = _startLocalPosition;
     }
 }
