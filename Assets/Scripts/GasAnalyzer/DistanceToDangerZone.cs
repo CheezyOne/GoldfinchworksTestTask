@@ -7,7 +7,8 @@ public class DistanceToDangerZone : MonoBehaviour
     private float _distanceToNearestDangerZone = Mathf.Infinity;
     private float _timer;
 
-    public string DistanceToNearestDangerZone => Mathf.Round(_distanceToNearestDangerZone) + " M.";
+    public string DistanceToNearestDangerZoneText => Mathf.Round(_distanceToNearestDangerZone) + " M.";
+    public float DistanceToNearestDangerZone => _distanceToNearestDangerZone;
 
     private void Update()
     {
