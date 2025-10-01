@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    [SerializeField] private float _speed;
+    private int index;
 
-    private void Update()
+    private void Awake()
     {
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + Vector3.right, _speed * Time.deltaTime);
+        StartCoroutine(TesTt());
+    }
+
+    private IEnumerator TesTt()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5f);
+            for (int i = 0; i < 50; i++)
+            {
+            }
+        }
     }
 }
